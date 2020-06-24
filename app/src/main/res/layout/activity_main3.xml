@@ -12,7 +12,7 @@
         android:layout_width="328dp"
         android:layout_height="59dp"
         android:entries="@array/countries"
-        android:prompt="@string/country_from"
+        android:prompt="@string/country_to"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -167,14 +167,15 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.098" />
+        app:layout_constraintVertical_bias="0.102" />
 
     <EditText
         android:id="@+id/peo"
-        android:layout_width="85dp"
-        android:layout_height="39dp"
+        android:layout_width="84dp"
+        android:layout_height="46dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
+        android:digits="0123456789"
         android:ems="10"
         android:fontFamily="@font/open_sans"
         android:gravity="right"
@@ -184,10 +185,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.602"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toEndOf="@+id/cl"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <Button
         android:id="@+id/book"
@@ -202,18 +203,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl"
         app:layout_constraintVertical_bias="0.359" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="107dp"
-        android:layout_height="71dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/book"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/aeroplane" />
 
     <TextView
         android:id="@+id/date1"

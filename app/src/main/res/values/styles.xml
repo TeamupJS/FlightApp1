@@ -3,12 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#ffffff</item>
+        <item name="colorPrimary">#063e2c</item>
+        <item name="colorPrimaryDark">#063e2c</item>
+        <item name="colorAccent">#80a19e</item>
+        <item name="actionMenuTextColor">#dccfb1</item>
+        <item name="android:textColorPrimary">#dccfb1</item>
     </style>
 
     <string name="country_from">From</string>
+    <string name="country_to">To</string>
+
     
     <string-array name="countries">
         <item>Bengaluru (BLR)</item>
@@ -17,6 +21,43 @@
         <item>Dubai (DXB)</item>
         <item>London (LHR)</item>
     </string-array>
+
+    <string-array name="c_blr">
+        <item>Atlanta (ATL)</item>
+        <item>Trivandrum (TRV)</item>
+        <item>Dubai (DXB)</item>
+        <item>London (LHR)</item>
+    </string-array>
+
+    <string-array name="c_atl">
+        <item>Bengaluru (BLR)</item>
+        <item>Trivandrum (TRV)</item>
+        <item>Dubai (DXB)</item>
+        <item>London (LHR)</item>
+    </string-array>
+
+    <string-array name="c_trv">
+        <item>Bengaluru (BLR)</item>
+        <item>Atlanta (ATL)</item>
+        <item>Dubai (DXB)</item>
+        <item>London (LHR)</item>
+    </string-array>
+
+    <string-array name="c_dxb">
+        <item>Bengaluru (BLR)</item>
+        <item>Atlanta (ATL)</item>
+        <item>Trivandrum (TRV)</item>
+        <item>London (LHR)</item>
+    </string-array>
+
+    <string-array name="c_lhr">
+        <item>Bengaluru (BLR)</item>
+        <item>Atlanta (ATL)</item>
+        <item>Trivandrum (TRV)</item>
+        <item>Dubai (DXB)</item>
+    </string-array>
+
+
 
     <string-array name="classes">
         <item>Economy</item>

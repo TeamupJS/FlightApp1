@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028"
-        app:srcCompat="@drawable/flight" />
+        android:src="@drawable/flight" />
 
     <Button
         android:id="@+id/login"
@@ -42,13 +42,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="260dp"
         android:ems="10"
+        android:fontFamily="@font/open_sans"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:fontFamily="@font/open_sans"
         android:password="false"
         android:singleLine="false"
         android:textColor="#DCCFB1"
         android:textColorHint="#80a19e"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -121,7 +122,8 @@
             android:hint="@string/p"
             android:inputType="textPassword"
             android:textColor="#dccfb1"
-            android:textColorHint="#80a19e" />
+            android:textColorHint="#80a19e"
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
