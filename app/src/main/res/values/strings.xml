@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">FlightApp</string>
+    <string name="login">Log in</string>
+    <string name="un">Username</string>
+    <string name="p">Password</string>
+    <string name="cp">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="nu1">Not a member?</string>
+    <string name="nu2">Join now</string>
+    <string name="ow">One way</string>
+    <string name="rt">Round trip</string>
+    <string name="from">FROM</string>
+    <string name="d">Select Date</string>
+    <string name="to">TO</string>
+    <string name="dot">Date of Travel</string>
+    <string name="dor">Date of Return</string>
+    <string name="c">Class</string>
+    <string name="nop">No of Passengers</string>
+    <string name="bf">Book Flight</string>
+
+</resources>
