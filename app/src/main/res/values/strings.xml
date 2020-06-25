@@ -17,5 +17,13 @@
     <string name="c">Class</string>
     <string name="nop">No of Passengers</string>
     <string name="bf">Book Flight</string>
+    <string name="pas1">1</string>
+    <string name="pass2">Max 5</string>
+    <string name="rs">₹</string>
+    <string name="logout">Log Out</string>
+    <string name="fare">Total Fare</string>
+    <string name="flno">Flight No</string>
+    <string name="fd">Flight Date</string>
+    <string name="Hi">Hi,</string>
 
 </resources>

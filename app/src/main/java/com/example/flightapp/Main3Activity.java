@@ -3,11 +3,13 @@ package com.example.flightapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,15 +23,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class Main3Activity extends AppCompatActivity  {
     Spinner froms,tos,cl;
     TextView date1,date2;
     RadioButton rb1,rb2;
     EditText peo;
-    String f,t,peo1;
-    float clamt,diamt;
-    int nop1=0,da,da1,mo,mo1,ye,ye1;
+    String f,t,cla,dot,dor,ty,fno,u1;
+    float t_fare;
+    int nop1,da,da1,mo,mo1,ye,ye1;
     Button book;
     DatePickerDialog.OnDateSetListener dates1,dates2;
 
@@ -50,16 +53,22 @@ public class Main3Activity extends AppCompatActivity  {
         peo=findViewById(R.id.peo);
         book=findViewById(R.id.book);
         date2.setEnabled(false);
+        date1.setText("1/7/2020");
 
-
-
+        Bundle b=getIntent().getExtras();
+        if(b!=null)
+        {
+            u1=b.getString("un");
+        }
 
 
         rb2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                date2.setText("8/7/2020");
                 date2.setEnabled(true);
+
+
             }
         });
 
@@ -68,8 +77,10 @@ public class Main3Activity extends AppCompatActivity  {
             public void onClick(View v) {
                 date2.setEnabled(false);
                 date2.setText("");
+
             }
         });
+
 
 
 
@@ -111,19 +122,19 @@ public class Main3Activity extends AppCompatActivity  {
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Invalid year!",Toast.LENGTH_SHORT);
                     toast.show();
-                    date1.setText("");
+                    date1.setText("1/7/2020");
                 }
                 else if(year>2022)
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Cannot book tickets to such future years!",Toast.LENGTH_SHORT);
                     toast.show();
-                    date1.setText("");
+                    date1.setText("1/7/2020");
                 }
                 else if(year==2020 && month<7)
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Booking starts from next month! Please choose date after next month",Toast.LENGTH_SHORT);
                     toast.show();
-                    date1.setText("");
+                    date1.setText("1/7/2020");
                 }
 
                 else {
@@ -169,19 +180,19 @@ public class Main3Activity extends AppCompatActivity  {
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Invalid year!",Toast.LENGTH_SHORT);
                     toast.show();
-                    date2.setText("");
+                    date2.setText("8/7/2020");
                 }
                 else if(year>2021)
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Cannot book tickets to such future years!",Toast.LENGTH_SHORT);
                     toast.show();
-                    date2.setText("");
+                    date2.setText("8/7/2020");
                 }
                 else if(year==2020 && month<7)
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Booking starts from next month! Please choose date after next month",Toast.LENGTH_SHORT);
                     toast.show();
-                    date2.setText("");
+                    date2.setText("8/7/2020");
                 }
                 else if(ye1>=ye ) {
                     if(ye1==ye)
@@ -189,13 +200,16 @@ public class Main3Activity extends AppCompatActivity  {
                         if(mo1==mo)
                         {
                             if(da1>=da+7)
+                            {
                                 date2.setText(date);
+
+                            }
 
                             else
                             {
                                 Toast toast=Toast.makeText(getApplicationContext(),"Book return ticket with minimum duration!",Toast.LENGTH_SHORT);
                                 toast.show();
-                                date2.setText("");
+                                date2.setText("8/7/2020");
                             }
 
 
@@ -206,7 +220,7 @@ public class Main3Activity extends AppCompatActivity  {
                         {
                             Toast toast=Toast.makeText(getApplicationContext(),"Return date less than Travel date!",Toast.LENGTH_SHORT);
                             toast.show();
-                            date2.setText("");
+                            date2.setText("8/7/2020");
                         }
                     }
                     else {
@@ -218,7 +232,7 @@ public class Main3Activity extends AppCompatActivity  {
                 {
                     Toast toast=Toast.makeText(getApplicationContext(),"Book return ticket with minimum duration!",Toast.LENGTH_SHORT);
                     toast.show();
-                    date2.setText("");
+                    date2.setText("8/7/2020");
                 }
 
             }
@@ -226,47 +240,7 @@ public class Main3Activity extends AppCompatActivity  {
 
 
 
-        peo.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                peo1=peo.getText().toString();
-                if(!"".equals(peo1))
-                {
-                    if(Integer.parseInt(peo.getText().toString())<1)
-                    {
-                        Toast toast=Toast.makeText(getApplicationContext(),"Invalid number",Toast.LENGTH_SHORT);
-                        toast.show();
-                    }
-                    else if(Integer.parseInt(peo.getText().toString())>5)
-                    {
-                        Toast toast=Toast.makeText(getApplicationContext(),"Maximum people per booking is 5",Toast.LENGTH_SHORT);
-                        toast.show();
-
-
-                    }
-                    else
-                    {
-                        nop1+=Integer.parseInt(peo.getText().toString());
-                        Toast toast=Toast.makeText(getApplicationContext(),nop1,Toast.LENGTH_SHORT);
-                        toast.show();
-
-                    }
-                    
-
-                }
-
-            }
-        });
 
 
 
@@ -274,8 +248,171 @@ public class Main3Activity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
+                if(rb1.isChecked())
+                    ty=rb1.getText().toString();
+                else
+                    ty=rb2.getText().toString();
+                nop1=Integer.parseInt(peo.getText().toString());
+                cla=cl.getSelectedItem().toString();
+                f=froms.getSelectedItem().toString();
+                t=tos.getSelectedItem().toString();
+                String[] fl= getApplicationContext().getResources().getStringArray(R.array.flightno);
+                int r=new Random().nextInt(fl.length);
+                fno=fl[r];
+                dot=date1.getText().toString();
+                dor=date2.getText().toString();
+
+                if(cla.equals("Economy"))
+                {
+                    if((f.equals("Bengaluru (BLR)") && t.equals("Trivandrum (TRV)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Trivandrum (TRV)"))))
+                    {
+                        t_fare=nop1*(2000);
+                    }
+
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("Atlanta (ATL)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Atlanta (ATL)"))))
+                    {
+                        t_fare=nop1*(100000);
+                    }
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("Dubai (DXB)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(20000);
+                    }
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("London (LHR)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(80000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("Atlanta (ATL)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("Atlanta (ATL)"))))
+                    {
+                        t_fare=nop1*(120000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("Dubai (DXB)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(25000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("London (LHR)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(90000);
+                    }
+                    else if((f.equals("Atlanta (ATL)") && t.equals("Dubai (DXB)"))|| ((t.equals("Atlanta (ATL)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(85000);
+                    }
+                    else if((f.equals("Atlanta (ATL)") && t.equals("London (LHR)"))|| ((t.equals("Atlanta (ATL)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(75000);
+                    }
+                    else if((f.equals("Dubai (DXB)") && t.equals("London (LHR)"))|| ((t.equals("Dubai (DXB)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(50000);
+                    }
 
 
+                }
+                else if(cla.equals("Business"))
+                {
+                    if((f.equals("Bengaluru (BLR)") && t.equals("Trivandrum (TRV)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Trivandrum (TRV)"))))
+                    {
+                        t_fare=nop1*(2000+5000);
+                    }
+
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("Atlanta (ATL)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Atlanta (ATL)"))))
+                    {
+                        t_fare=nop1*(100000+5000);
+                    }
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("Dubai (DXB)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(20000+5000);
+                    }
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("London (LHR)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(80000+5000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("Atlanta (ATL)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("Atlanta (ATL)"))))
+                    {
+                        t_fare=nop1*(120000+5000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("Dubai (DXB)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(25000+5000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("London (LHR)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(90000+5000);
+                    }
+                    else if((f.equals("Atlanta (ATL)") && t.equals("Dubai (DXB)"))|| ((t.equals("Atlanta (ATL)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(85000+5000);
+                    }
+                    else if((f.equals("Atlanta (ATL)") && t.equals("London (LHR)"))|| ((t.equals("Atlanta (ATL)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(75000+5000);
+                    }
+                    else if((f.equals("Dubai (DXB)") && t.equals("London (LHR)"))|| ((t.equals("Dubai (DXB)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(50000+5000);
+                    }
+
+                }
+                else
+                {
+                    if((f.equals("Bengaluru (BLR)") && t.equals("Trivandrum (TRV)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Trivandrum (TRV)"))))
+                    {
+                        t_fare=nop1*(2000+20000);
+                    }
+
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("Atlanta (ATL)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Atlanta (ATL)"))))
+                    {
+                        t_fare=nop1*(100000+20000);
+                    }
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("Dubai (DXB)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(20000+20000);
+                    }
+                    else if((f.equals("Bengaluru (BLR)") && t.equals("London (LHR)"))|| ((t.equals("Bengaluru (BLR)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(80000+20000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("Atlanta (ATL)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("Atlanta (ATL)"))))
+                    {
+                        t_fare=nop1*(120000+20000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("Dubai (DXB)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(25000+20000);
+                    }
+                    else if((f.equals("Trivandrum (TRV)") && t.equals("London (LHR)"))|| ((t.equals("Trivandrum (TRV)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(90000+20000);
+                    }
+                    else if((f.equals("Atlanta (ATL)") && t.equals("Dubai (DXB)"))|| ((t.equals("Atlanta (ATL)") && f.equals("Dubai (DXB)"))))
+                    {
+                        t_fare=nop1*(85000+20000);
+                    }
+                    else if((f.equals("Atlanta (ATL)") && t.equals("London (LHR)"))|| ((t.equals("Atlanta (ATL)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(75000+20000);
+                    }
+                    else if((f.equals("Dubai (DXB)") && t.equals("London (LHR)"))|| ((t.equals("Dubai (DXB)") && f.equals("London (LHR)"))))
+                    {
+                        t_fare=nop1*(50000+20000);
+                    }
+
+
+                }
+
+                Toast toast=Toast.makeText(getApplicationContext(),"Flight Booked!",Toast.LENGTH_SHORT);
+                toast.show();
+                Intent i=new Intent(Main3Activity.this,Main4Activity.class);
+                i.putExtra("un",u1);
+                i.putExtra("from",f);
+                i.putExtra("to",t);
+                i.putExtra("fare",t_fare);
+                i.putExtra("fldate",dot);
+                i.putExtra("flno",fno);
+                i.putExtra("cl",cla);
+                i.putExtra("nop",nop1);
+                startActivity(i);
+                finish();
 
 
 
@@ -316,6 +453,7 @@ public class Main3Activity extends AppCompatActivity  {
                     tos.setAdapter(adapter);
 
                 }
+
 
 
 

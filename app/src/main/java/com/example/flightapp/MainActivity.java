@@ -48,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 {
                     if(un.getText().toString().equals(u1))
                     {
-                        startActivity(new Intent(MainActivity.this,Main3Activity.class));
+                        Toast toast=Toast.makeText(getApplicationContext(),"Login Successful!",Toast.LENGTH_SHORT);
+                        toast.show();
+                        Intent i=new Intent(MainActivity.this,Main3Activity.class);
+                        i.putExtra("un",u1);
+                        startActivity(i);
 
                     }
 

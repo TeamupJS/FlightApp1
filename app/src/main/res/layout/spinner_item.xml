@@ -5,8 +5,9 @@
     android:id="@+id/text1"
     android:textSize="20sp"
     android:textColor="#063e2c"
+    android:background="#dccfb1"
     android:textStyle="bold"
-    android:fontFamily="@font/open_sans">
+    android:fontFamily="@font/open_sans_bold">
 
 
 </TextView>

@@ -32,6 +32,8 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(p.getText().toString().equals(p1.getText().toString()))
                 {
+                    Toast toast=Toast.makeText(getApplicationContext(),"User Registered!",Toast.LENGTH_SHORT);
+                    toast.show();
                     Intent i=new Intent(Main2Activity.this,MainActivity.class);
                     us=u.getText().toString();
                     pas=p.getText().toString();
