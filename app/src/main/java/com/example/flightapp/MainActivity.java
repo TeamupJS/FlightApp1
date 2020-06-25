@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                 else
                 {
-                    Toast toast=Toast.makeText(getApplicationContext(),"Invalid Credentials",Toast.LENGTH_SHORT);
+                    Toast toast=Toast.makeText(getApplicationContext(),"Account not found!",Toast.LENGTH_SHORT);
                     toast.show();
                 }
 
